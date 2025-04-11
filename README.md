@@ -50,6 +50,24 @@ A full-featured web application for connecting clients with skilled crafters, bu
 | Dev Tools   | Visual Studio, SQL Server, Git             |
 
 ---
+## 📦 NuGet Packages
+
+| Category               | Package Name                                        |
+|------------------------|-----------------------------------------------------|
+| ASP.NET Core           | Microsoft.AspNetCore.Mvc.NewtonsoftJson            |
+|                        | Microsoft.AspNetCore.Authentication.Cookies        |
+| Identity               | Microsoft.AspNetCore.Identity.EntityFrameworkCore  |
+|                        | Microsoft.AspNetCore.Identity                      |
+|                        | Microsoft.AspNetCore.Identity.UI                   |
+| EF Core                | Microsoft.EntityFrameworkCore                      |
+|                        | Microsoft.EntityFrameworkCore.SqlServer            |
+|                        | Microsoft.EntityFrameworkCore.Tools                |
+| AutoMapper             | AutoMapper.Extensions.Microsoft.DependencyInjection|
+| Payments               | Stripe.net                                         |
+| API & Docs             | Swashbuckle.AspNetCore                             |
+| File Handling          | Microsoft.AspNetCore.Http.Abstractions             |
+| Configuration & Options| Microsoft.Extensions.Configuration.Binder          |
+|                        | Microsoft.Extensions.Options.ConfigurationExtensions|
 
 ## 🚀 Getting Started
 
