@@ -1,7 +1,12 @@
 # 🛠️ Crafting Services Web Application
 
 A full-featured web application for connecting clients with skilled crafters, built using ASP.NET Core MVC and Web API. It supports user management, service bookings, secure payments via Stripe, and a complete admin panel.
+____________________________________________________
 
+🎯 **Project Description**
+
+This web application is designed to **connect talented crafters with clients** seeking unique, handmade, or customized services. It offers a smooth and user-friendly experience for both parties:
+____________________________________________________
 ---
 
 ## 📌 Features
@@ -69,7 +74,6 @@ A full-featured web application for connecting clients with skilled crafters, bu
 | Configuration & Options| Microsoft.Extensions.Configuration.Binder          |
 |                        | Microsoft.Extensions.Options.ConfigurationExtensions|
 
-## 🚀 Getting Started
 
 ### Prerequisites
 - .NET 9 SDK
@@ -77,9 +81,10 @@ A full-featured web application for connecting clients with skilled crafters, bu
 - SQL Server or LocalDB
 - Stripe account (for payment configuration)
 
-### Setup Instructions
 
-1. **Clone the repo**  
-   ```bash
-   git clone https://github.com/SAMA32002/CraftingServiceApp.git
-   cd crafting-services-app
+## 👨‍💻 About Me
+**Ziad Bahaa**  
+🎓 Bachelor’s in Information Systems  
+💼 ASP.NET Back-End Developer  
+📧 ziadbahaa41@gmail.com 
+🔗 [LinkedIn](https://www.linkedin.com/in/ziad-bahaa-b04561265/)
