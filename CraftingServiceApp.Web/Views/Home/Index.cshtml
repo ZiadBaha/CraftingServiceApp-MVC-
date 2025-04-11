@@ -1,0 +1,951 @@
+﻿@model CraftingServiceApp.Web.ViewModels.HomePageViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 mb-5">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @for (int i = 0; i < Model.ActiveSliders.Count; i++)
+            {
+                var item = Model.ActiveSliders[i];
+                var isActive = i == 0 ? "active" : "";
+
+                <div class="carousel-item @isActive">
+                    <div class="position-relative">
+                        <img class="w-100" src="@item.FilePath" alt="Slider Image">
+                        <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 102, 0.5);"></div>
+                    </div>
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-4 animated slideInDown">@item.Description</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</div>
+<!-- Carousel End -->
+
+
+
+
+
+<!-- About Start -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+<style>
+    .scale-img {
+        opacity: 0;
+        transform: scale(0.3);
+        transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+    }
+
+    /* إضافة تنسيق بسيط للجزء بتاع الطوارئ */
+    .emergency-contact {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+        .emergency-contact i {
+            color: #007bff; /* لون أيقونة التليفون */
+            font-size: 24px;
+        }
+
+    .emergency-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .emergency-text p {
+            margin: 0;
+            color: black;
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .emergency-text h3 {
+            margin: 0;
+            color: #6c757d; /* text-secondary */
+        }
+</style>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-secondary text-uppercase" style="color: red !important;">About Us</h6>
+                <h1 class="mb-4">We Are Trusted Services Company Since 1990</h1>
+                <p class="mb-4">
+                    Herafy is a web platform that connects crafters with clients seeking handmade or customized services, offering secure payments and easy communication.
+                </p>
+
+                <p class="fw-medium" style="color: #007bff;">
+                    <i class="fa fa-check text-success me-3"></i>
+                    Residential & commercial plumbing
+                </p>
+
+                <p class="fw-medium" style="color: #007bff;">
+                    <i class="fa fa-check text-success me-3"></i>
+                    Quality services at affordable prices
+                </p>
+
+                <p class="fw-medium" style="color: #007bff;">
+                    <i class="fa fa-check text-success me-3"></i>
+                    Immediate 24/7 emergency services
+                </p>
+
+                <!-- ✅ Emergency Contact مع الأيقونة -->
+                <div class="emergency-contact">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="emergency-text">
+                       <h3>+012 345 6789</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 pt-4" style="min-height: 500px;">
+                <div class="position-relative h-100 wow fadeInUp" data-wow-delay="0.5s">
+                    <img class="position-absolute img-fluid w-100 h-100 scale-img" id="img1" src="~/uploads/about-1.jpg" style="object-fit: cover; padding: 0 0 50px 100px;" alt="">
+                    <img class="position-absolute start-0 bottom-0 img-fluid bg-white pt-2 pe-2 w-50 h-50 scale-img" id="img2" src="~/uploads/team-1.jpg" style="object-fit: cover;" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new WOW().init();
+
+        function growImage(imageId, delay) {
+            setTimeout(function() {
+                var img = document.getElementById(imageId);
+                img.style.transform = "scale(1)";
+                img.style.opacity = "1";
+            }, delay);
+        }
+
+        setTimeout(function() {
+            growImage('img1', 700);
+            growImage('img2', 1200);
+        }, 300);
+    });
+</script>
+<!-- About End -->
+
+
+
+
+
+
+<!-- Fact Start -->
+<div class="container-fluid fact fact-bg my-5 py-5 position-relative overflow-hidden">
+    <!-- الخلفية بصورة -->
+    <img src="/uploads/carousel-1.jpg" alt="Background Image" class="fact-bg-img">
+
+    <!-- طبقة التعتيم -->
+    <div class="fact-bg-overlay"></div>
+
+    <!-- المحتوى -->
+    <div class="container position-relative z-index-2">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
+                <i class="fa fa-check fa-2x text-white mb-3"></i>
+                <h2 class="text-white mb-2" data-toggle="counter-up">0</h2>
+                <p class="text-white mb-0">Years of experience</p>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
+                <i class="fa fa-users-cog fa-2x text-white mb-3"></i>
+                <h2 class="text-white mb-2" data-toggle="counter-up">0</h2>
+                <p class="text-white mb-0">Specialized technicians</p>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
+                <i class="fa fa-users fa-2x text-white mb-3"></i>
+                <h2 class="text-white mb-2" data-toggle="counter-up">0</h2>
+                <p class="text-white mb-0">Satisfied customers</p>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
+                <i class="fa fa-wrench fa-2x text-white mb-3"></i>
+                <h2 class="text-white mb-2" data-toggle="counter-up">0</h2>
+                <p class="text-white mb-0">Completed projects</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Counter Up JavaScript -->
+<script>
+    $(document).ready(function () {
+        function startCounting() {
+            const counters = [
+                { element: $('.col-md-6:nth-child(1) h2'), finalValue: 35 },
+                { element: $('.col-md-6:nth-child(2) h2'), finalValue: 150 },
+                { element: $('.col-md-6:nth-child(3) h2'), finalValue: 1500 },
+                { element: $('.col-md-6:nth-child(4) h2'), finalValue: 750 }
+            ];
+
+            counters.forEach(counter => {
+                var $this = counter.element;
+                $({ countNum: 0 }).animate({ countNum: counter.finalValue }, {
+                    duration: 2500,
+                    easing: 'swing',
+                    step: function () {
+                        $this.text(Math.floor(this.countNum));
+                    },
+                    complete: function () {
+                        $this.text(counter.finalValue);
+                        $this.addClass('counter-complete');
+                    }
+                });
+            });
+        }
+
+        if (typeof Waypoint !== 'undefined') {
+            var waypoint = new Waypoint({
+                element: document.querySelector('.fact'),
+                handler: function () {
+                    startCounting();
+                    this.destroy();
+                },
+                offset: '75%'
+            });
+        } else {
+            setTimeout(startCounting, 500);
+        }
+    });
+</script>
+
+<!-- CSS -->
+<style>
+    .fact-bg {
+        position: relative;
+        width: 100%;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fact-bg-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* تغطية الخلفية */
+        z-index: 0;
+    }
+
+    .fact-bg-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 102, 0.6); /* طبقة شفافة بلون كحلي */
+        z-index: 1;
+    }
+
+    .fact-bg .container {
+        z-index: 2;
+    }
+
+    .text-white {
+        color: #ffffff !important;
+    }
+
+    .fact-bg h2 {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        font-weight: bold;
+        font-size: 3rem;
+        transition: text-shadow 0.5s ease;
+    }
+
+    .fact-bg i {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    .counter-complete {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8) !important;
+        transition: text-shadow 0.5s ease !important;
+    }
+
+    .fact-bg h2.counter-complete:hover {
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+    }
+
+    .z-index-2 {
+        position: relative;
+        z-index: 2;
+    }
+</style>
+<!-- Fact End -->
+
+
+
+
+
+
+
+<!--Start-->
+
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!--Start-->
+<section id="recent-services">
+    <div class="container">
+        <h1 class="display-6 mb-4 fw-bold text-center">
+            <i class="bi bi-tools text-primary"></i>  Recent Services
+        </h1>
+
+
+
+        <div class="row justify-content-center">
+            @{
+                var delay = 0; // علشان نخلي فيه وقت تأخير بين كل كارت
+            }
+            @foreach (var service in Model.RecentServices)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4 d-flex align-items-stretch"
+                     data-aos="fade-up" data-aos-delay="@delay">
+                    <div class="card-item w-100">
+                        <div class="card border-0 bg-transparent shadow-sm">
+                            <div class="card-image position-relative" style="width: 100%; height: 250px; overflow: hidden;">
+                                <a href="@Url.Action("Details", "Services", new { id = service.Id })" aria-label="View details of @service.Title">
+                                    <img src="@(!string.IsNullOrEmpty(service.Image) ? service.Image : "/images/default-service.png")"
+                                         alt="Image for @service.Title"
+                                         class="img-fluid w-100 h-100"
+                                         style="object-fit: cover; border-radius: 10px;">
+                                </a>
+                            </div>
+                            <div class="card-body p-0 mt-3">
+                                <h5 class="mt-2 text-truncate" title="@service.Title">
+                                    <a href="@Url.Action("Details", "Services", new { id = service.Id })">@service.Title</a>
+                                </h5>
+                                <p class="mb-1 text-muted">
+                                    By <strong>@(service.Crafter?.FullName ?? "Unknown")</strong>
+                                </p>
+
+                                <p class="small">
+                                    @{
+                                        var descPreview = service.Description?.Length > 100
+                                        ? service.Description.Substring(0, 100) + "..."
+                                        : service.Description;
+                                    }
+                                    @descPreview
+                                    @if (service.Description?.Length > 100)
+                                    {
+                                        <a href="@Url.Action("Details", "Services", new { id = service.Id })" class="text-decoration-underline fst-italic">
+                                            Read more
+                                        </a>
+                                    }
+                                </p>
+
+                                <span class="fw-bold" style="color: orange;">@service.Price.ToString("F2") EGP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                delay += 100; // كل كارت يتأخر عن اللي قبله بـ 100 ملي ثانية
+            }
+        </div>
+    </div>
+
+    <div class="text-center mt-4" data-aos="fade-up">
+        <a href="@Url.Action("Index", "Services")" class="btn btn-outline-primary btn-lg rounded-pill">
+            <i class="bi bi-arrow-right-circle"></i> Show All Services
+        </a>
+    </div>
+</section>
+<!--End-->
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+        duration: 1000, // مدة الأنيميشن 1 ثانية
+        once: true      // الأنيميشن يحصل مرة واحدة بس
+    });
+</script>
+<!--End-->
+<!-- start -->
+<!-- ********** CSS LINKS ********** -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+<style>
+    /* Custom styles */
+    .testimonial-section {
+        background-color: #f8f9fa;
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1e90ff;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .testimonial-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        position: relative;
+    }
+
+    .testimonial-item {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .testimonial-text {
+        color: #6c757d;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .client-name {
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .client-profession {
+        color: #6c757d;
+        text-align: center;
+    }
+
+    .thumbnail-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .thumbnail {
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+        margin: 15px 0;
+    }
+
+    /* Navigation buttons */
+    .custom-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background-color: #ff8c00;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+        .custom-nav.prev {
+            left: -20px;
+        }
+
+        .custom-nav.next {
+            right: -20px;
+        }
+
+        .custom-nav i {
+            color: white;
+        }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto" style="max-width: 500px;">
+
+
+            <h1 class="display-6 mb-4 fw-bold text-center">
+                <i class="bi bi-person-plus text-primary"></i></i>
+                </i>Our Professional Team Members
+</h1>
+
+
+        </div>
+        <div class="row g-4">
+            <!-- Member 1 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item">
+                    <div class="team-img">
+                        <img class="img-fluid" src="~/uploads/team-1.jpg" alt="Ali">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light text-center p-4">
+                        <h5>Ali</h5>
+                        <span class="text-primary">Carpenter</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item">
+                    <div class="team-img">
+                        <img class="img-fluid" src="~/uploads/team-2.jpg" alt="Mohamed">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light text-center p-4">
+                        <h5>Mohamed</h5>
+                        <span class="text-primary">Plumber</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item">
+                    <div class="team-img">
+                        <img class="img-fluid" src="~/uploads/team-3.jpg" alt="Youssef">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light text-center p-4">
+                        <h5>Youssef</h5>
+                        <span class="text-primary">Blacksmith</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item">
+                    <div class="team-img">
+                        <img class="img-fluid" src="~/uploads/team-4.jpg" alt="Faride">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary rounded-circle m-1" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light text-center p-4">
+                        <h5>Faride</h5>
+                        <span class="text-primary">Blacksmith</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- CSS جوه نفس الصفحة -->
+<style>
+    .team-item {
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        transition: 0.3s ease-in-out;
+    }
+
+    .team-img {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .team-img img {
+            width: 100%;
+            height: auto;
+            transition: 0.5s ease;
+        }
+
+    .team-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 102, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+
+    .team-social {
+        display: flex;
+    }
+
+    .team-item:hover .team-overlay {
+        opacity: 1;
+    }
+
+    .team-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .btn-square {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        padding: 0;
+        font-size: 16px;
+    }
+
+</style>
+
+<!-- JS (مش ضروري هنا، بس لو عاوزة أي حركة إضافية ممكن) -->
+<script>
+    // مثال: تقدرِ تعملي حركة عند الضغط على زر معين لو محتاجة
+    console.log('Team section loaded!');
+</script>
+
+<!-- لو عاوزة تفعلي أي مكتبة مثل FontAwesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+<!-- Team End -->
+<!-- ********** TESTIMONIAL SECTION ********** -->
+<div class="testimonial-section">
+    <div class="container">
+        <h1 class="display-6 mb-4 fw-bold text-center">
+            <i class="bi bi-chat-left-quote text-primary"></i> What They Say About <br />Our Services?
+        </h1>
+
+        <div class="row align-items-center">
+            <!-- Left side thumbnails -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="thumbnail-container d-flex flex-column align-items-start">
+                    <img class="thumbnail" src="~/uploads/testimonial-1.jpg" alt=""
+                         style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; margin-left: 80px;">
+
+                    <img class="thumbnail" src="~/uploads/testimonial-2.jpg" alt=""
+                         style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; margin-left: 1px;">
+
+                    <img class="thumbnail" src="~/uploads/testimonial-3.jpg" alt=""
+                         style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-left: 80px;">
+                </div>
+            </div>
+
+            <!-- Center carousel -->
+            <div class="col-lg-6">
+                <div class="testimonial-container">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Testimonial 1 -->
+                            <div class="carousel-item active">
+                                <div class="testimonial-item">
+                                    <img class="mx-auto mb-4 rounded-circle shadow" src="~/uploads/testimonial-1.jpg" alt="">
+                                    <p class="testimonial-text">"The tailoring was beyond expectations! The dresses were delivered on time, the tailoring was meticulous, and the materials were exquisite."</p>
+                                    <h5 class="client-name">Asmaa</h5>
+                                    <p class="client-profession">Profession</p>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial 2 -->
+                            <div class="carousel-item">
+                                <div class="testimonial-item">
+                                    <img class="mx-auto mb-4 rounded-circle shadow" src="~/uploads/testimonial-2.jpg" alt="">
+                                    <p class="testimonial-text">"Excellent service! They came the same day I reported the problem and worked quickly and efficiently."</p>
+                                    <h5 class="client-name">Omar</h5>
+                                    <p class="client-profession">Profession</p>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial 3 -->
+                            <div class="carousel-item">
+                                <div class="testimonial-item">
+                                    <img class="mx-auto mb-4 rounded-circle shadow" src="~/uploads/testimonial-3.jpg" alt="">
+                                    <p class="testimonial-text">"It was a wonderful experience! The carpenter was very professional, responded quickly, and provided me with a custom design."</p>
+                                    <h5 class="client-name">Ahmed</h5>
+                                    <p class="client-profession">Profession</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Navigation -->
+                        <div class="navigation-container">
+                            <div class="custom-nav prev">
+                                <i class="bi bi-chevron-left"></i>
+                            </div>
+                            <div class="custom-nav next">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side thumbnails -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="thumbnail-container d-flex flex-column align-items-start">
+                    <img class="thumbnail" src="~/uploads/testimonial-1.jpg" alt=""
+                         style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; margin-left: 50px;">
+
+                    <img class="thumbnail" src="~/uploads/testimonial-2.jpg" alt=""
+                         style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; margin-left: 200px;">
+
+                    <img class="thumbnail" src="~/uploads/testimonial-3.jpg" alt=""
+                         style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-left: 50px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ********** CSS STYLES ********** -->
+<style>
+    .testimonial-section {
+        padding: 60px 0;
+        background-color: #ffffff; /* أبيض */
+    }
+
+    .testimonial-container {
+        position: relative;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .testimonial-text {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+
+    .client-name {
+        font-weight: bold;
+        color: #212529;
+        margin-bottom: 0;
+    }
+
+    .client-profession {
+        color: #6c757d;
+        margin-top: 5px;
+    }
+
+    /* Thumbnail Images */
+    .thumbnail-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .thumbnail {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s ease-in-out;
+        transform: scale(0.3);
+        opacity: 0.3;
+    }
+
+        .thumbnail.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+    /* Navigation buttons */
+    .navigation-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .custom-nav {
+        width: 40px;
+        height: 40px;
+        background-color: #0d6efd;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+        font-size: 18px;
+        transition: all 0.3s ease;
+    }
+
+        .custom-nav:hover {
+            background-color: #0b5ed7;
+        }
+</style>
+
+<!-- ********** JS CODE ********** -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const carousel = new bootstrap.Carousel(document.getElementById('testimonialCarousel'), {
+            interval: 5000,
+            wrap: true
+        });
+
+        document.querySelector('.custom-nav.prev').addEventListener('click', function () {
+            carousel.prev();
+        });
+
+        document.querySelector('.custom-nav.next').addEventListener('click', function () {
+            carousel.next();
+        });
+
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const testimonialSection = document.querySelector('.testimonial-section');
+
+        const observerOptions = {
+            root: null,
+            threshold: 0.3
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    thumbnails.forEach(thumb => {
+                        thumb.classList.add('active');
+                    });
+                } else {
+                    thumbnails.forEach(thumb => {
+                        thumb.classList.remove('active');
+                    });
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        observer.observe(testimonialSection);
+    });
+</script>
+
+
+
+
+
+<!-- ********** BACK TO TOP BUTTON ********** -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top">
+    <i class="bi bi-arrow-up"></i>
+</a>
+
+<style>
+    .back-to-top {
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        z-index: 99;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #0b5ed7;
+        }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            if (typeof jQuery == 'undefined') {
+                console.error('هذا الكود يتطلب jQuery. الرجاء تضمين jQuery في مشروعك.');
+                return;
+            }
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 300) {
+                    $('.back-to-top').addClass('show');
+                } else {
+                    $('.back-to-top').removeClass('show');
+                }
+            });
+
+            $('.back-to-top').click(function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, 800);
+                return false;
+            });
+        });
+    </script>
+}
+
+<!-- ********** REQUIRED LINKS ********** -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,0 +1,10 @@
+﻿@model List<CraftingServiceApp.Domain.Entities.Request>
+@using CraftingServiceApp.Domain.Enums
+@{
+    ViewData["Title"] = "Received Requests";
+}
+
+<h2>Received Requests</h2>
+
+<!-- Load the partial view inside -->
+<partial name="_ReceivedRequestsPartial" model="Model" />

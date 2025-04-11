@@ -1,0 +1,11 @@
+﻿@model IEnumerable<CraftingServiceApp.Domain.Entities.Request>
+@using CraftingServiceApp.Domain.Enums
+
+@{
+    ViewData["Title"] = "Sent Requests";
+}
+
+<h2 class="mb-4">My Sent Requests</h2>
+
+<!-- Load the partial view inside -->
+<partial name="_SentRequestsPartial" model="Model" />
