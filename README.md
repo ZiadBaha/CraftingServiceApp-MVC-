@@ -84,7 +84,7 @@ ____________________________________________________
 
 ## 👨‍💻 About Me
 **Ziad Bahaa**  
-🎓 Bachelor’s in Information Systems  
-💼 ASP.NET Back-End Developer  
-📧 ziadbahaa41@gmail.com 
-🔗 [LinkedIn](https://www.linkedin.com/in/ziad-bahaa-b04561265/)
+- 🎓 Bachelor’s in Information Systems  
+- 💼 ASP.NET Back-End Developer  
+- 📧 ziadbahaa41@gmail.com 
+- 🔗 [LinkedIn](https://www.linkedin.com/in/ziad-bahaa-b04561265/)
